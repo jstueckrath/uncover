@@ -1,0 +1,535 @@
+<?xml version="1.0"?>
+<gts id="Leader Election">
+
+  <initial>
+    <graph id="Start graph" edgeids="true" hypergraph="true" edgemode="undirected">
+      <attr name="name">
+        <string>Smallest ring</string>
+      </attr>
+      <node id="_15"/>
+      <node id="_25"/>
+      <rel id="_1">
+        <attr name="label">
+          <string>DA</string>
+        </attr>
+        <relend target="_25" role="vertex" startorder="0"/>
+        <relend target="_15" role="vertex" startorder="1"/>
+      </rel>
+      <rel id="_2">
+        <attr name="label">
+          <string>A</string>
+        </attr>
+        <relend target="_15" role="vertex" startorder="0"/>
+        <relend target="_25" role="vertex" startorder="1"/>
+      </rel>
+    </graph>
+  </initial>
+
+  <rule id="deactivate0">
+    <attr name="name">
+      <string>Deactivate process</string>
+    </attr>
+    <lhs>
+      <rulegraph id="deactivate0 Left Hand rulegraph">
+        <graph id="deactivate0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rd0_lh_0"/>
+          <node id="rd0_lh_1"/>
+          <rel id="rd0_lh_2">
+            <attr name="label">
+              <string>A</string>
+            </attr>
+            <relend target="rd0_lh_0" role="vertex" startorder="0"/>
+            <relend target="rd0_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="deactivate0 Right Hand rulegraph">
+        <graph id="deactivate0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rd0_rh_0"/>
+          <node id="rd0_rh_1"/>
+          <rel id="rd0_rh_2">
+            <attr name="label">
+              <string>P</string>
+            </attr>
+            <relend target="rd0_rh_0" role="vertex" startorder="0"/>
+            <relend target="rd0_rh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="deactivate0_mapping">
+      <mapelem from="rd0_lh_0" to="rd0_rh_0"/>
+      <mapelem from="rd0_lh_1" to="rd0_rh_1"/>
+    </mapping>
+  </rule>
+
+  <rule id="deactivate1">
+    <attr name="name">
+      <string>Deactivate detector</string>
+    </attr>
+    <lhs>
+      <rulegraph id="deactivate0 Left Hand rulegraph">
+        <graph id="deactivate0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rd1_lh_0"/>
+          <node id="rd1_lh_1"/>
+          <rel id="rd1_lh_2">
+            <attr name="label">
+              <string>DA</string>
+            </attr>
+            <relend target="rd1_lh_0" role="vertex" startorder="0"/>
+            <relend target="rd1_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="deactivate0 Right Hand rulegraph">
+        <graph id="deactivate0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rd1_rh_0"/>
+          <node id="rd1_rh_1"/>
+          <rel id="rd1_rh_2">
+            <attr name="label">
+              <string>DP</string>
+            </attr>
+            <relend target="rd1_rh_0" role="vertex" startorder="0"/>
+            <relend target="rd1_rh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="deactivate1_mapping">
+      <mapelem from="rd1_lh_0" to="rd1_rh_0"/>
+      <mapelem from="rd1_lh_1" to="rd1_rh_1"/>
+    </mapping>
+  </rule>
+
+  <rule id="new0">
+    <attr name="name">
+      <string>Process spawns process</string>
+    </attr>
+    <lhs>
+      <rulegraph id="new0 Left Hand rulegraph">
+        <graph id="new0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rn0_lh_0"/>
+          <node id="rn0_lh_1"/>
+          <rel id="rn0_lh_2">
+            <attr name="label">
+              <string>A</string>
+            </attr>
+            <relend target="rn0_lh_0" role="vertex" startorder="0"/>
+            <relend target="rn0_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="new0 Right Hand rulegraph">
+        <graph id="new0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rn0_rh_0"/>
+          <node id="rn0_rh_1"/>
+          <node id="rn0_rh_4"/>
+          <rel id="rn0_rh_2">
+            <attr name="label">
+              <string>A</string>
+            </attr>
+            <relend target="rn0_rh_0" role="vertex" startorder="0"/>
+            <relend target="rn0_rh_4" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="rn0_rh_3">
+            <attr name="label">
+              <string>A</string>
+            </attr>
+            <relend target="rn0_rh_4" role="vertex" startorder="0"/>
+            <relend target="rn0_rh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="new0_mapping">
+      <mapelem from="rn0_lh_0" to="rn0_rh_0"/>
+      <mapelem from="rn0_lh_1" to="rn0_rh_1"/>
+    </mapping>
+  </rule>
+
+  <rule id="new1">
+    <attr name="name">
+      <string>Detector spawns process</string>
+    </attr>
+    <lhs>
+      <rulegraph id="new1 Left Hand rulegraph">
+        <graph id="new1 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rn1_lh_0"/>
+          <node id="rn1_lh_1"/>
+          <rel id="rn1_lh_2">
+            <attr name="label">
+              <string>DA</string>
+            </attr>
+            <relend target="rn1_lh_0" role="vertex" startorder="0"/>
+            <relend target="rn1_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="new1 Right Hand rulegraph">
+        <graph id="new1 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rn1_rh_0"/>
+          <node id="rn1_rh_1"/>
+          <node id="rn1_rh_4"/>
+          <rel id="rn1_rh_2">
+            <attr name="label">
+              <string>DA</string>
+            </attr>
+            <relend target="rn1_rh_0" role="vertex" startorder="0"/>
+            <relend target="rn1_rh_4" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="rn1_rh_3">
+            <attr name="label">
+              <string>A</string>
+            </attr>
+            <relend target="rn1_rh_4" role="vertex" startorder="0"/>
+            <relend target="rn1_rh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="new1_mapping">
+      <mapelem from="rn1_lh_0" to="rn1_rh_0"/>
+      <mapelem from="rn1_lh_1" to="rn1_rh_1"/>
+    </mapping>
+  </rule>
+
+  <rule id="term0">
+    <attr name="name">
+      <string>Passive detector spawns termination message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="term0 Left Hand rulegraph">
+        <graph id="term0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rt0_lh_0"/>
+          <node id="rt0_lh_1"/>
+          <rel id="rt0_lh_2">
+            <attr name="label">
+              <string>DP</string>
+            </attr>
+            <relend target="rt0_lh_0" role="vertex" startorder="0"/>
+            <relend target="rt0_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="term0 Right Hand rulegraph">
+        <graph id="term0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rt0_rh_0"/>
+          <node id="rt0_rh_1"/>
+          <rel id="rt0_rh_2">
+            <attr name="label">
+              <string>DP</string>
+            </attr>
+            <relend target="rt0_rh_0" role="vertex" startorder="0"/>
+            <relend target="rt0_rh_1" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="rt0_rh_3">
+            <attr name="label">
+              <string>T</string>
+            </attr>
+            <relend target="rt0_rh_1" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="term0_mapping">
+      <mapelem from="rt0_lh_0" to="rt0_rh_0"/>
+      <mapelem from="rt0_lh_1" to="rt0_rh_1"/>
+      <mapelem from="rt0_lh_2" to="rt0_rh_2"/>
+    </mapping>
+  </rule>
+
+  <rule id="forw0">
+    <attr name="name">
+      <string>Passive process forwards termination message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="forw0 Left Hand rulegraph">
+        <graph id="forw0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rf0_lh_0"/>
+          <node id="rf0_lh_1"/>
+          <rel id="rf0_lh_2">
+            <attr name="label">
+              <string>P</string>
+            </attr>
+            <relend target="rf0_lh_0" role="vertex" startorder="0"/>
+            <relend target="rf0_lh_1" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="rf0_lh_3">
+            <attr name="label">
+              <string>T</string>
+            </attr>
+            <relend target="rf0_lh_0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="forw0 Right Hand rulegraph">
+        <graph id="forw0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rf0_rh_0"/>
+          <node id="rf0_rh_1"/>
+          <rel id="rf0_rh_2">
+            <attr name="label">
+              <string>P</string>
+            </attr>
+            <relend target="rf0_rh_0" role="vertex" startorder="0"/>
+            <relend target="rf0_rh_1" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="rf0_rh_3">
+            <attr name="label">
+              <string>T</string>
+            </attr>
+            <relend target="rf0_rh_1" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="forw0_mapping">
+      <mapelem from="rf0_lh_0" to="rf0_rh_0"/>
+      <mapelem from="rf0_lh_1" to="rf0_rh_1"/>
+      <mapelem from="rf0_lh_2" to="rf0_rh_2"/>
+    </mapping>
+  </rule>
+
+  <rule id="detect0">
+    <attr name="name">
+      <string>Passive detector recieves termination message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="detect0 Left Hand rulegraph">
+        <graph id="detect0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rdt0_lh_0"/>
+          <node id="rdt0_lh_1"/>
+          <rel id="rdt0_lh_2">
+            <attr name="label">
+              <string>DP</string>
+            </attr>
+            <relend target="rdt0_lh_0" role="vertex" startorder="0"/>
+            <relend target="rdt0_lh_1" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="rdt0_lh_3">
+            <attr name="label">
+              <string>T</string>
+            </attr>
+            <relend target="rdt0_lh_0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="detect0 Right Hand rulegraph">
+        <graph id="detect0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rdt0_rh_0"/>
+          <node id="rdt0_rh_1"/>
+          <rel id="rdt0_rh_2">
+            <attr name="label">
+              <string>DP</string>
+            </attr>
+            <relend target="rdt0_rh_0" role="vertex" startorder="0"/>
+            <relend target="rdt0_rh_1" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="rdt0_rh_3">
+            <attr name="label">
+              <string>termination</string>
+            </attr>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="detect0_mapping">
+      <mapelem from="rdt0_lh_0" to="rdt0_rh_0"/>
+      <mapelem from="rdt0_lh_1" to="rdt0_rh_1"/>
+      <mapelem from="rdt0_lh_2" to="rdt0_rh_2"/>
+    </mapping>
+  </rule>
+
+  <rule id="leave0">
+    <attr name="name">
+      <string>Active process leaves ring</string>
+    </attr>
+    <lhs>
+      <rulegraph id="leave0 Left Hand rulegraph">
+        <graph id="leave0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rl0_lh_0"/>
+          <node id="rl0_lh_1"/>
+          <rel id="rl0_lh_2">
+            <attr name="label">
+              <string>A</string>
+            </attr>
+            <relend target="rl0_lh_0" role="vertex" startorder="0"/>
+            <relend target="rl0_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="leave0 Right Hand rulegraph">
+        <graph id="leave0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rl0_rh_0"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="leave0_mapping">
+      <mapelem from="rl0_lh_0" to="rl0_rh_0"/>
+      <mapelem from="rl0_lh_1" to="rl0_rh_0"/>
+    </mapping>
+  </rule>
+
+  <rule id="leave1">
+    <attr name="name">
+      <string>Passive process leaves ring</string>
+    </attr>
+    <lhs>
+      <rulegraph id="leave1 Left Hand rulegraph">
+        <graph id="leave1 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rl1_lh_0"/>
+          <node id="rl1_lh_1"/>
+          <rel id="rl1_lh_2">
+            <attr name="label">
+              <string>P</string>
+            </attr>
+            <relend target="rl1_lh_0" role="vertex" startorder="0"/>
+            <relend target="rl1_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="leave1 Right Hand rulegraph">
+        <graph id="leave1 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rl1_rh_0"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="leave1_mapping">
+      <mapelem from="rl1_lh_0" to="rl1_rh_0"/>
+      <mapelem from="rl1_lh_1" to="rl1_rh_0"/>
+    </mapping>
+  </rule>
+
+  <rule id="leave2">
+    <attr name="name">
+      <string>Passive detector leaves ring</string>
+    </attr>
+    <lhs>
+      <rulegraph id="leave2 Left Hand rulegraph">
+        <graph id="leave2 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rl2_lh_0"/>
+          <node id="rl2_lh_1"/>
+          <rel id="rl2_lh_2">
+            <attr name="label">
+              <string>DP</string>
+            </attr>
+            <relend target="rl2_lh_0" role="vertex" startorder="0"/>
+            <relend target="rl2_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="leave2 Right Hand rulegraph">
+        <graph id="leave2 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rl2_rh_0"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="leave2_mapping">
+      <mapelem from="rl2_lh_0" to="rl2_rh_0"/>
+      <mapelem from="rl2_lh_1" to="rl2_rh_0"/>
+    </mapping>
+  </rule>
+
+  <rule id="leave3">
+    <attr name="name">
+      <string>Active detector leaves ring</string>
+    </attr>
+    <lhs>
+      <rulegraph id="leave3 Left Hand rulegraph">
+        <graph id="leave3 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rl3_lh_0"/>
+          <node id="rl3_lh_1"/>
+          <rel id="rl3_lh_2">
+            <attr name="label">
+              <string>DA</string>
+            </attr>
+            <relend target="rl3_lh_0" role="vertex" startorder="0"/>
+            <relend target="rl3_lh_1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="leave3 Right Hand rulegraph">
+        <graph id="leave3 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rl3_rh_0"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="leave3_mapping">
+      <mapelem from="rl3_lh_0" to="rl3_rh_0"/>
+      <mapelem from="rl3_lh_1" to="rl3_rh_0"/>
+    </mapping>
+  </rule>
+
+  <rule id="lost0">
+    <attr name="name">
+      <string>Termination message is lost</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lost0 Left Hand rulegraph">
+        <graph id="lost0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rlo0_lh_0"/>
+          <rel id="rlo0_lh_1">
+            <attr name="label">
+              <string>T</string>
+            </attr>
+            <relend target="rlo0_lh_0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="lost0 Right Hand rulegraph">
+        <graph id="lost0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="rlo0_rh_0"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="lost0_mapping">
+      <mapelem from="rlo0_lh_0" to="rlo0_rh_0"/>
+    </mapping>
+  </rule>
+
+  <rule id="termlost0">
+    <attr name="name">
+      <string>Termination flag is lost</string>
+    </attr>
+    <lhs>
+      <rulegraph id="termlost0 Left Hand rulegraph">
+        <graph id="termlost0 lefthandgraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <rel id="rtlo0_lh_0">
+            <attr name="label">
+              <string>termination</string>
+            </attr>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="termlost0 Right Hand rulegraph">
+        <graph id="termlost0 righthandgraph" edgemode="undirected" edgeids="true" hypergraph="true"/>
+      </rulegraph>
+    </rhs>
+    <mapping id="termlost0_mapping"/>
+  </rule>
+</gts>

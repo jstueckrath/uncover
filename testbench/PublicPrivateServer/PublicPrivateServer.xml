@@ -1,0 +1,487 @@
+<?xml version="1.0"?>
+<GTS id="Public / Private Servers in mobile systems and processes">
+
+  <Initial>
+    <Graph id="initial" edgeids="true" hypergraph="true" edgemode="undirected">
+      <attr name="name">
+        <string>A private Server and public generator</string>
+      </attr>
+      <node id="n"/>
+      <rel id="Gpub">
+        <attr name="label">
+          <string>Gpub</string>
+        </attr>
+      </rel>
+      <rel id="Sprv">
+        <attr name="label">
+          <string>Sprv</string>
+        </attr>
+        <relend id="spriv" target="n" startorder="0"/>
+      </rel>
+    </Graph>
+  </Initial>
+
+  <Rule id="r1">
+    <attr name="name">
+      <string>Create public server</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="cps_lrg">
+        <Graph id="cps_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <rel id="cps_lh_gpub">
+            <attr name="label">
+              <string>Gpub</string>
+            </attr>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="cps_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="n"/>
+          <rel id="cps_rh_gpub">
+            <attr name="label">
+              <string>Gpub</string>
+            </attr>
+          </rel>
+          <rel id="cps_rh_sprv">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="cps_rh_spriv" target="n" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="cps_mapping">
+      <MapElem from="cps_lh_gpub" to="cps_rh_gpub"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="r2">
+    <attr name="name">
+      <string>Delete public generator</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="dpg_lrg">
+        <Graph id="dpg_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <rel id="dpg_lh_gpub">
+            <attr name="label">
+              <string>Gpub</string>
+            </attr>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="dpg_rrg">
+        <Graph id="dpg_rg" edgeids="true" hypergraph="true" edgemode="undirected"/>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="dpg_mapping">
+    </Mapping>
+  </Rule>
+
+  <Rule id="r3">
+    <attr name="name">
+      <string>Create connection between two public servers</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="ccuu_lrg">
+        <Graph id="ccuu_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="ccuu_lh_n1"/>
+          <node id="ccuu_lg_n2"/>
+          <rel id="ccuu_lh_Sx">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="ccuu_lh_sx" target="ccuu_lh_n1" startorder="0"/>
+          </rel>
+          <rel id="ccuu_lh_Sy">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="ccuu_lh_sy" target="ccuu_lg_n2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="ccuu_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="ccuu_rh_n1"/>
+          <node id="ccuu_rg_n2"/>
+          <rel id="ccuu_rh_Sx">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="ccuu_rh_sx" target="ccuu_rh_n1" startorder="0"/>
+          </rel>
+          <rel id="ccuu_rh_Sy">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="ccuu_rh_sy" target="ccuu_rg_n2" startorder="0"/>
+          </rel>
+          <rel id="ccuu_rh_C">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="ccuu_rh_c1" target="ccuu_rh_n1" startorder="0"/>
+            <relend id="ccuu_rh_c2" target="ccuu_rg_n2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="ccuu_mapping">
+      <MapElem from="ccuu_lh_n1" to="ccuu_rh_n1"/>
+      <MapElem from="ccuu_lg_n2" to="ccuu_rg_n2"/>
+      <MapElem from="ccuu_lh_Sx" to="ccuu_rh_Sx"/>
+      <MapElem from="ccuu_lh_Sy" to="ccuu_rh_Sy"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="r4">
+    <attr name="name">
+      <string>Create connection between two private servers</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="ccrr_lrg">
+        <Graph id="ccrr_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="ccrr_lh_n1"/>
+          <node id="ccrr_lg_n2"/>
+          <rel id="ccrr_lh_Sx">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="ccrr_lh_sx" target="ccrr_lh_n1" startorder="0"/>
+          </rel>
+          <rel id="ccrr_lh_Sy">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="ccrr_lh_sy" target="ccrr_lg_n2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="ccrr_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="ccrr_rh_n1"/>
+          <node id="ccrr_rg_n2"/>
+          <rel id="ccrr_rh_Sx">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="ccrr_rh_sx" target="ccrr_rh_n1" startorder="0"/>
+          </rel>
+          <rel id="ccrr_rh_Sy">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="ccrr_rh_sy" target="ccrr_rg_n2" startorder="0"/>
+          </rel>
+          <rel id="ccrr_rh_C">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="ccrr_rh_c1" target="ccrr_rh_n1" startorder="0"/>
+            <relend id="ccrr_rh_c2" target="ccrr_rg_n2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="ccrr_mapping">
+      <MapElem from="ccrr_lh_n1" to="ccrr_rh_n1"/>
+      <MapElem from="ccrr_lg_n2" to="ccrr_rg_n2"/>
+      <MapElem from="ccrr_lh_Sx" to="ccrr_rh_Sx"/>
+      <MapElem from="ccrr_lh_Sy" to="ccrr_rh_Sy"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="r5">
+    <attr name="name">
+      <string>Create connection from a private to a public server</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="ccru_lrg">
+        <Graph id="ccru_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="ccru_lh_n1"/>
+          <node id="ccru_lg_n2"/>
+          <rel id="ccru_lh_Sx">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="ccru_lh_sx" target="ccru_lh_n1" startorder="0"/>
+          </rel>
+          <rel id="ccru_lh_Sy">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="ccru_lh_sy" target="ccru_lg_n2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="ccru_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="ccru_rh_n1"/>
+          <node id="ccru_rg_n2"/>
+          <rel id="ccru_rh_Sx">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="ccru_rh_sx" target="ccru_rh_n1" startorder="0"/>
+          </rel>
+          <rel id="ccru_rh_Sy">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="ccru_rh_sy" target="ccru_rg_n2" startorder="0"/>
+          </rel>
+          <rel id="ccru_rh_C">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="ccru_rh_c1" target="ccru_rh_n1" startorder="0"/>
+            <relend id="ccru_rh_c2" target="ccru_rg_n2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="ccru_mapping">
+      <MapElem from="ccru_lh_n1" to="ccru_rh_n1"/>
+      <MapElem from="ccru_lg_n2" to="ccru_rg_n2"/>
+      <MapElem from="ccru_lh_Sx" to="ccru_rh_Sx"/>
+      <MapElem from="ccru_lh_Sy" to="ccru_rh_Sy"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="r6">
+    <attr name="name">
+      <string>Create internal process</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="cip_lrg">
+        <Graph id="cip_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="cip_lh_n1"/>
+          <rel id="cip_lh_Sprv">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="cip_lh_sprv" target="cip_lh_n1" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="cip_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="cip_rh_n1"/>
+          <rel id="cip_rh_Sprv">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="cip_rh_prv" target="cip_rh_n1" startorder="0"/>
+          </rel>
+          <rel id="cip_rh_Pint">
+            <attr name="label">
+              <string>Pint</string>
+            </attr>
+            <relend id="cip_rh_pint" target="cip_rh_n1" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="cip_mapping">
+      <MapElem from="cip_lh_n1" to="cip_rh_n1"/>
+      <MapElem from="cip_lh_Sprv" to="cip_rh_Sprv"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="r7">
+    <attr name="name">
+      <string>Create external process</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="cep_lrg">
+        <Graph id="cep_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="cep_lh_n1"/>
+          <rel id="cep_lh_Spub">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="cep_lh_spub" target="cep_lh_n1" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="cep_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="cep_rh_n1"/>
+          <rel id="cep_rh_Spub">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="cep_rh_pub" target="cep_rh_n1" startorder="0"/>
+          </rel>
+          <rel id="cep_rh_Pext">
+            <attr name="label">
+              <string>Pext</string>
+            </attr>
+            <relend id="cep_rh_pext" target="cep_rh_n1" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="cep_mapping">
+      <MapElem from="cep_lh_n1" to="cep_rh_n1"/>
+      <MapElem from="cep_lh_Spub" to="cep_rh_Spub"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="r8">
+    <attr name="name">
+      <string>Internal process crosses connection</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="ipcc_lrg">
+        <Graph id="ipcc_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="ipcc_lh_n1"/>
+          <node id="ipcc_lg_n2"/>
+          <rel id="ipcc_lh_Pint">
+            <attr name="label">
+              <string>Pint</string>
+            </attr>
+            <relend id="ipcc_lh_pint" target="ipcc_lh_n1" startorder="0"/>
+          </rel>
+          <rel id="ipcc_lh_C">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="ipcc_lh_c1" target="ipcc_lh_n1" startorder="0"/>
+            <relend id="ipcc_lh_c2" target="ipcc_lg_n2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="ipcc_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="ipcc_rh_n1"/>
+          <node id="ipcc_rg_n2"/>
+          <rel id="ipcc_rh_Pint">
+            <attr name="label">
+              <string>Pint</string>
+            </attr>
+            <relend id="ipcc_rh_pint" target="ipcc_rg_n2" startorder="0"/>
+          </rel>
+          <rel id="ipcc_rh_C">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="ipcc_rh_c1" target="ipcc_rh_n1" startorder="0"/>
+            <relend id="ipcc_rh_c2" target="ipcc_rg_n2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="ipcc_mapping">
+      <MapElem from="ipcc_lh_n1" to="ipcc_rh_n1"/>
+      <MapElem from="ipcc_lg_n2" to="ipcc_rg_n2"/>
+      <MapElem from="ipcc_lh_C" to="ipcc_rh_C"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="r9">
+    <attr name="name">
+      <string>External process crosses connection</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="epcc_lrg">
+        <Graph id="epcc_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="epcc_lh_n1"/>
+          <node id="epcc_lg_n2"/>
+          <rel id="epcc_lh_Pext">
+            <attr name="label">
+              <string>Pext</string>
+            </attr>
+            <relend id="epcc_lh_pext" target="epcc_lh_n1" startorder="0"/>
+          </rel>
+          <rel id="epcc_lh_C">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="epcc_lh_c1" target="epcc_lh_n1" startorder="0"/>
+            <relend id="epcc_lh_c2" target="epcc_lg_n2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="epcc_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="epcc_rh_n1"/>
+          <node id="epcc_rg_n2"/>
+          <rel id="epcc_rh_Pext">
+            <attr name="label">
+              <string>Pext</string>
+            </attr>
+            <relend id="epcc_rh_pext" target="epcc_rg_n2" startorder="0"/>
+          </rel>
+          <rel id="epcc_rh_C">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="epcc_rh_c1" target="epcc_rh_n1" startorder="0"/>
+            <relend id="epcc_rh_c2" target="epcc_rg_n2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="epcc_mapping">
+      <MapElem from="epcc_lh_n1" to="epcc_rh_n1"/>
+      <MapElem from="epcc_lg_n2" to="epcc_rg_n2"/>
+      <MapElem from="epcc_lh_C" to="epcc_rh_C"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="r10">
+    <attr name="name">
+      <string>Private server becomes public server</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="psps_lrg">
+        <Graph id="psps_lg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="psps_lh_n1"/>
+          <rel id="psps_lh_Sprv">
+            <attr name="label">
+              <string>Sprv</string>
+            </attr>
+            <relend id="psps_lh_sprv" target="psps_lh_n1" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cps_rrg">
+        <Graph id="psps_rg" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="psps_rh_n1"/>
+          <rel id="psps_rh_Spub">
+            <attr name="label">
+              <string>Spub</string>
+            </attr>
+            <relend id="psps_rh_spub" target="psps_rh_n1" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="psps_mapping">
+      <MapElem from="psps_lh_n1" to="psps_rh_n1"/>
+    </Mapping>
+  </Rule>
+</GTS>

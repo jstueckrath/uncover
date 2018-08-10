@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no" ?>
+<gts id="leader election for 3 processes">
+
+  <initial>
+    <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg1">
+      <attr name="name">
+        <string>Initial leader election ring</string>
+      </attr>
+      <node id="hg1n1"/>
+      <node id="hg1n2"/>
+      <node id="hg1n4"/>
+      <rel id="hg1e3">
+        <attr name="label">
+          <string>P1</string>
+        </attr>
+        <relend role="vertex" startorder="0" target="hg1n1"/>
+        <relend role="vertex" startorder="1" target="hg1n2"/>
+      </rel>
+      <rel id="hg1e5">
+        <attr name="label">
+          <string>P2</string>
+        </attr>
+        <relend role="vertex" startorder="0" target="hg1n2"/>
+        <relend role="vertex" startorder="1" target="hg1n4"/>
+      </rel>
+      <rel id="hg1e6">
+        <attr name="label">
+          <string>P3</string>
+        </attr>
+        <relend role="vertex" startorder="0" target="hg1n4"/>
+        <relend role="vertex" startorder="1" target="hg1n1"/>
+      </rel>
+      <attr name="id">
+        <int>1</int>
+      </attr>
+    </graph>
+  </initial>
+
+  <rule id="r13">
+    <attr name="id">
+      <int>13</int>
+    </attr>
+    <attr name="name">
+      <string>Leader leaves the ring</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg13">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg13">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r13map">
+      <mapelem from="hg0n2" to="hg0n1"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r12">
+    <attr name="id">
+      <int>12</int>
+    </attr>
+    <attr name="name">
+      <string>P3 leaves ring</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg12">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg12">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r12map">
+      <mapelem from="hg0n2" to="hg0n1"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r11">
+    <attr name="id">
+      <int>11</int>
+    </attr>
+    <attr name="name">
+      <string>P2 leaves ring</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg11">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg11">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r11map">
+      <mapelem from="hg0n2" to="hg0n1"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r1">
+    <attr name="id">
+      <int>1</int>
+    </attr>
+    <attr name="name">
+      <string>P1 generates message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg1">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg1">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r1map">
+      <mapelem from="hg0e3" to="hg0e3"/>
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r2">
+    <attr name="id">
+      <int>2</int>
+    </attr>
+    <attr name="name">
+      <string>P2 generates message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg2">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg2">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r2map">
+      <mapelem from="hg0e3" to="hg0e3"/>
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r3">
+    <attr name="id">
+      <int>3</int>
+    </attr>
+    <attr name="name">
+      <string>P3 generates message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg3">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg3">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r3map">
+      <mapelem from="hg0e3" to="hg0e3"/>
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r4">
+    <attr name="id">
+      <int>4</int>
+    </attr>
+    <attr name="name">
+      <string>P2 forwards message of P1</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg4">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg4">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r4map">
+      <mapelem from="hg0e3" to="hg0e3"/>
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r5">
+    <attr name="id">
+      <int>5</int>
+    </attr>
+    <attr name="name">
+      <string>P3 forwards message of P1</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg5">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg5">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r5map">
+      <mapelem from="hg0e3" to="hg0e3"/>
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r6">
+    <attr name="id">
+      <int>6</int>
+    </attr>
+    <attr name="name">
+      <string>P3 forwards message of P2</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg6">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg6">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r6map">
+      <mapelem from="hg0e3" to="hg0e3"/>
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r7">
+    <attr name="id">
+      <int>7</int>
+    </attr>
+    <attr name="name">
+      <string>P1 receives message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg7">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg7">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r7map">
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r8">
+    <attr name="id">
+      <int>8</int>
+    </attr>
+    <attr name="name">
+      <string>P2 receives message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg8">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M2</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg8">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r8map">
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r9">
+    <attr name="id">
+      <int>9</int>
+    </attr>
+    <attr name="name">
+      <string>P3 receives message</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg9">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+          <rel id="hg0e4">
+            <attr name="label">
+              <string>M3</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg9">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r9map">
+      <mapelem from="hg0n2" to="hg0n2"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="r10">
+    <attr name="id">
+      <int>10</int>
+    </attr>
+    <attr name="name">
+      <string>P1 leaves ring</string>
+    </attr>
+    <lhs>
+      <rulegraph id="lhshg10">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+          <node id="hg0n2"/>
+          <rel id="hg0e3">
+            <attr name="label">
+              <string>P1</string>
+            </attr>
+            <relend role="vertex" startorder="0" target="hg0n1"/>
+            <relend role="vertex" startorder="1" target="hg0n2"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="rhshg10">
+        <graph edgeids="true" edgemode="undirected" hypergraph="true" id="hg0">
+          <node id="hg0n1"/>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="r10map">
+      <mapelem from="hg0n2" to="hg0n1"/>
+      <mapelem from="hg0n1" to="hg0n1"/>
+    </mapping>
+  </rule>
+
+</gts>

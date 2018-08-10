@@ -1,0 +1,594 @@
+<?xml version="1.0"?>
+<gts id="MultiUserSystem">
+
+  <initial>
+    <graph id="No User or Objects" edgeids="true" hypergraph="true" edgemode="undirected">
+      <attr name="name">
+        <string>Initially empty system</string>
+      </attr>
+    </graph>
+  </initial>
+
+  <rule id="addUser">
+    <attr name="name">
+      <string>Add a user</string>
+    </attr>
+    <lhs>
+      <rulegraph id="addUser_l">
+        <graph id="addUser_lg" edgemode="undirected" edgeids="true" hypergraph="true"/>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="addUser_r">
+        <graph id="addUser_rg" edgemode="undirected" edgeids="true" hypergraph="true"> 
+          <node id="addUser_rg_n1"/>
+          <rel id="addUser_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="addUser_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="addUser_m"/>
+  </rule>
+
+  <rule id="addObjectW">
+    <attr name="name">
+      <string>Add an object with write access</string>
+    </attr>
+    <lhs>
+      <rulegraph id="addObjectW_l">
+        <graph id="addObjectW_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="addObjectW_lg_n1"/>
+          <rel id="addObjectW_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="addObjectW_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="addObjectW_r">
+        <graph id="addObjectW_rg" edgemode="undirected" edgeids="true" hypergraph="true"> 
+          <node id="addObjectW_rg_n1"/>
+          <node id="addObjectW_rg_n2"/>
+          <rel id="addObjectW_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="addObjectW_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="addObjectW_rg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="addObjectW_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="addObjectW_rg_e3">
+            <attr name="label">
+              <string>W</string>
+            </attr>
+            <relend target="addObjectW_rg_n1" role="vertex" startorder="0"/>
+            <relend target="addObjectW_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="addObjectW_m">
+      <mapelem from="addObjectW_lg_n1" to="addObjectW_rg_n1" />
+      <mapelem from="addObjectW_lg_e1" to="addObjectW_rg_e1" />
+    </mapping>
+  </rule>
+
+  <rule id="addObjectR">
+    <attr name="name">
+      <string>Add an object with read access</string>
+    </attr>
+    <lhs>
+      <rulegraph id="addObjectR_l">
+        <graph id="addObjectR_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="addObjectR_lg_n1"/>
+          <rel id="addObjectR_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="addObjectR_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="addObjectR_r">
+        <graph id="addObjectR_rg" edgemode="undirected" edgeids="true" hypergraph="true"> 
+          <node id="addObjectR_rg_n1"/>
+          <node id="addObjectR_rg_n2"/>
+          <rel id="addObjectR_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="addObjectR_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="addObjectR_rg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="addObjectR_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="addObjectR_rg_e3">
+            <attr name="label">
+              <string>R</string>
+            </attr>
+            <relend target="addObjectR_rg_n1" role="vertex" startorder="0"/>
+            <relend target="addObjectR_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="addObjectR_m">
+      <mapelem from="addObjectR_lg_n1" to="addObjectR_rg_n1" />
+      <mapelem from="addObjectR_lg_e1" to="addObjectR_rg_e1" />
+    </mapping>
+  </rule>
+
+  <rule id="tradeW">
+    <attr name="name">
+      <string>Trade write rights</string>
+    </attr>
+    <lhs>
+      <rulegraph id="tradeW_l">
+        <graph id="tradeW_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="tradeW_lg_n1"/>
+          <node id="tradeW_lg_n2"/>
+          <node id="tradeW_lg_n3"/>
+          <rel id="tradeW_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="tradeW_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeW_lg_e2">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="tradeW_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeW_lg_e3">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="tradeW_lg_n3" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeW_lg_e4">
+            <attr name="label">
+              <string>W</string>
+            </attr>
+            <relend target="tradeW_lg_n1" role="vertex" startorder="0"/>
+            <relend target="tradeW_lg_n3" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="tradeW_r">
+         <graph id="tradeW_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="tradeW_rg_n1"/>
+          <node id="tradeW_rg_n2"/>
+          <node id="tradeW_rg_n3"/>
+          <rel id="tradeW_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="tradeW_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeW_rg_e2">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="tradeW_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeW_rg_e3">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="tradeW_rg_n3" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeW_rg_e4">
+            <attr name="label">
+              <string>W</string>
+            </attr>
+            <relend target="tradeW_rg_n2" role="vertex" startorder="0"/>
+            <relend target="tradeW_rg_n3" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="tradeW_m">
+      <mapelem from="tradeW_lg_n1" to="tradeW_rg_n1" />
+      <mapelem from="tradeW_lg_n2" to="tradeW_rg_n2" />
+      <mapelem from="tradeW_lg_n3" to="tradeW_rg_n3" />
+      <mapelem from="tradeW_lg_e1" to="tradeW_rg_e1" />
+      <mapelem from="tradeW_lg_e2" to="tradeW_rg_e2" />
+      <mapelem from="tradeW_lg_e3" to="tradeW_rg_e3" />
+    </mapping>
+  </rule>
+
+  <rule id="tradeR">
+    <attr name="name">
+      <string>Trade read rights</string>
+    </attr>
+    <lhs>
+      <rulegraph id="tradeR_l">
+        <graph id="tradeR_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="tradeR_lg_n1"/>
+          <node id="tradeR_lg_n2"/>
+          <node id="tradeR_lg_n3"/>
+          <rel id="tradeR_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="tradeR_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeR_lg_e2">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="tradeR_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeR_lg_e3">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="tradeR_lg_n3" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeR_lg_e4">
+            <attr name="label">
+              <string>R</string>
+            </attr>
+            <relend target="tradeR_lg_n1" role="vertex" startorder="0"/>
+            <relend target="tradeR_lg_n3" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="tradeR_r">
+         <graph id="tradeR_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="tradeR_rg_n1"/>
+          <node id="tradeR_rg_n2"/>
+          <node id="tradeR_rg_n3"/>
+          <rel id="tradeR_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="tradeR_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeR_rg_e2">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="tradeR_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeR_rg_e3">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="tradeR_rg_n3" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="tradeR_rg_e4">
+            <attr name="label">
+              <string>R</string>
+            </attr>
+            <relend target="tradeR_rg_n2" role="vertex" startorder="0"/>
+            <relend target="tradeR_rg_n3" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="tradeR_m">
+      <mapelem from="tradeR_lg_n1" to="tradeR_rg_n1" />
+      <mapelem from="tradeR_lg_n2" to="tradeR_rg_n2" />
+      <mapelem from="tradeR_lg_n3" to="tradeR_rg_n3" />
+      <mapelem from="tradeR_lg_e1" to="tradeR_rg_e1" />
+      <mapelem from="tradeR_lg_e2" to="tradeR_rg_e2" />
+      <mapelem from="tradeR_lg_e3" to="tradeR_rg_e3" />
+    </mapping>
+  </rule>
+
+  <rule id="getR">
+    <attr name="name">
+      <string>Get read access to an existing object</string>
+    </attr>
+    <lhs>
+      <rulegraph id="getR_l">
+        <graph id="getR_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="getR_lg_n1"/>
+          <node id="getR_lg_n2"/>
+          <rel id="getR_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="getR_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="getR_lg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="getR_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="getR_r">
+         <graph id="getR_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="getR_rg_n1"/>
+          <node id="getR_rg_n2"/>
+          <rel id="getR_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="getR_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="getR_rg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="getR_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="getR_rg_e3">
+            <attr name="label">
+              <string>R</string>
+            </attr>
+            <relend target="getR_rg_n1" role="vertex" startorder="0"/>
+            <relend target="getR_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="getR_m">
+      <mapelem from="getR_lg_n1" to="getR_rg_n1" />
+      <mapelem from="getR_lg_n2" to="getR_rg_n2" />
+      <mapelem from="getR_lg_e1" to="getR_rg_e1" />
+      <mapelem from="getR_lg_e2" to="getR_rg_e2" />
+    </mapping>
+  </rule>
+
+  <rule id="deleteW">
+    <attr name="name">
+      <string>Remove write right</string>
+    </attr>
+    <lhs>
+      <rulegraph id="deleteW_l">
+        <graph id="deleteW_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="deleteW_lg_n1"/>
+          <node id="deleteW_lg_n2"/>
+          <rel id="deleteW_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="deleteW_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="deleteW_lg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="deleteW_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="deleteW_lg_e3">
+            <attr name="label">
+              <string>W</string>
+            </attr>
+            <relend target="deleteW_lg_n1" role="vertex" startorder="0"/>
+            <relend target="deleteW_lg_n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="deleteW_r">
+         <graph id="deleteW_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="deleteW_rg_n1"/>
+          <node id="deleteW_rg_n2"/>
+          <rel id="deleteW_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="deleteW_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="deleteW_rg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="deleteW_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="deleteW_m">
+      <mapelem from="deleteW_lg_n1" to="deleteW_rg_n1" />
+      <mapelem from="deleteW_lg_n2" to="deleteW_rg_n2" />
+      <mapelem from="deleteW_lg_e1" to="deleteW_rg_e1" />
+      <mapelem from="deleteW_lg_e2" to="deleteW_rg_e2" />
+    </mapping>
+  </rule>
+
+  <rule id="deleteR">
+    <attr name="name">
+      <string>Remove read right</string>
+    </attr>
+    <lhs>
+      <rulegraph id="deleteR_l">
+        <graph id="deleteR_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="deleteR_lg_n1"/>
+          <node id="deleteR_lg_n2"/>
+          <rel id="deleteR_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="deleteR_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="deleteR_lg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="deleteR_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="deleteR_lg_e3">
+            <attr name="label">
+              <string>R</string>
+            </attr>
+            <relend target="deleteR_lg_n1" role="vertex" startorder="0"/>
+            <relend target="deleteR_lg_n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="deleteR_r">
+         <graph id="deleteR_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="deleteR_rg_n1"/>
+          <node id="deleteR_rg_n2"/>
+          <rel id="deleteR_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="deleteR_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="deleteR_rg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="deleteR_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="deleteR_m">
+      <mapelem from="deleteR_lg_n1" to="deleteR_rg_n1" />
+      <mapelem from="deleteR_lg_n2" to="deleteR_rg_n2" />
+      <mapelem from="deleteR_lg_e1" to="deleteR_rg_e1" />
+      <mapelem from="deleteR_lg_e2" to="deleteR_rg_e2" />
+    </mapping>
+  </rule>
+
+  <rule id="downgrade">
+    <attr name="name">
+      <string>Downgrade write to read right</string>
+    </attr>
+    <lhs>
+      <rulegraph id="downgrade_l">
+        <graph id="downgrade_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="downgrade_lg_n1"/>
+          <node id="downgrade_lg_n2"/>
+          <rel id="downgrade_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="downgrade_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="downgrade_lg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="downgrade_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="downgrade_lg_e3">
+            <attr name="label">
+              <string>W</string>
+            </attr>
+            <relend target="downgrade_lg_n1" role="vertex" startorder="0"/>
+            <relend target="downgrade_lg_n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="downgrade_r">
+         <graph id="downgrade_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="downgrade_rg_n1"/>
+          <node id="downgrade_rg_n2"/>
+          <rel id="downgrade_rg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="downgrade_rg_n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="downgrade_rg_e2">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="downgrade_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="downgrade_rg_e3">
+            <attr name="label">
+              <string>R</string>
+            </attr>
+            <relend target="downgrade_rg_n1" role="vertex" startorder="0"/>
+            <relend target="downgrade_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="downgrade_m">
+      <mapelem from="downgrade_lg_n1" to="downgrade_rg_n1" />
+      <mapelem from="downgrade_lg_n2" to="downgrade_rg_n2" />
+      <mapelem from="downgrade_lg_e1" to="downgrade_rg_e1" />
+      <mapelem from="downgrade_lg_e2" to="downgrade_rg_e2" />
+    </mapping>
+  </rule>
+
+  <rule id="deleteUser">
+    <attr name="name">
+      <string>Remove a user</string>
+    </attr>
+    <lhs>
+      <rulegraph id="deleteUser_l">
+        <graph id="deleteUser_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="deleteUser_lg_n1"/>
+          <rel id="deleteUser_lg_e1">
+            <attr name="label">
+              <string>U</string>
+            </attr>
+            <relend target="deleteUser_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="deleteUser_r">
+         <graph id="deleteUser_rg" edgemode="undirected" edgeids="true" hypergraph="true"/>
+      </rulegraph>
+    </rhs>
+    <mapping id="deleteUser_m"/>
+  </rule>
+
+  <rule id="deleteObject">
+    <attr name="name">
+      <string>Remove an object</string>
+    </attr>
+    <lhs>
+      <rulegraph id="deleteObject_l">
+        <graph id="deleteObject_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="deleteObject_lg_n1"/>
+          <rel id="deleteObject_lg_e1">
+            <attr name="label">
+              <string>O</string>
+            </attr>
+            <relend target="deleteObject_lg_n1" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="deleteObject_r">
+         <graph id="deleteObject_rg" edgemode="undirected" edgeids="true" hypergraph="true"/>
+      </rulegraph>
+    </rhs>
+    <mapping id="deleteObject_m"/>
+  </rule>
+
+</gts>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<gxl>
+  <graph id="Two Processes in Critical Section" hypergraph="true" edgeids="true" edgemode="undirected">
+    <node id="n0"/>
+    <node id="n1"/>
+    <rel id="e0">
+      <attr name="label">
+        <string>S6</string>
+      </attr>
+      <relend target="n0" role="vertex" startorder="0"/>
+    </rel>
+    <rel id="e1">
+      <attr name="label">
+        <string>S6</string>
+      </attr>
+      <relend target="n1" role="vertex" startorder="0"/>
+    </rel>
+    <rel id="e2">
+      <attr name="label">
+        <string>N</string>
+      </attr>
+      <relend target="n0" role="vertex" startorder="0"/>
+      <relend target="n1" role="vertex" startorder="1"/>
+    </rel>
+  </graph>
+</gxl>

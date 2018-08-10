@@ -1,0 +1,5 @@
+/doc/html
+/doc/latex
+/doc/mainpage
+*.tar.gz
+uncover.dms

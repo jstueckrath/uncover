@@ -1,0 +1,15 @@
+Nice to have:
+- rewrite io classes (if necessary) to use boost::filesystem to be platform independent
+- Change GTXLReader and GTXLWriter documentation to be abstracted from the XML format and
+  add XML dependent documentation to GTXLReaderXerces and GTXLWriterXerces
+
+Special notices:
+- the Isomorphism class must be revised bevor using it again
+
+Suggested Optimizations:
+- Prepare UQRules as a whole before starting analysis to minimize preparation while running.
+- Delete UQRules if all instantiations are order morphisms.
+
+Optional Optimizations:
+- Replace hard coded, manual validation of GXL and GTXL with automated validation of Xerces.
+- GTXLReaderXerces: replace key of nodeIDList with XMLCh* to circumvent transcoding to string

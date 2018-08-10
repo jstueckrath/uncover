@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<gxl>
+
+  <graph id="ernc" edgeids="true" hypergraph="true" edgemode="undirected">
+    <attr name="name">
+      <string>A public server can access a private server</string>
+    </attr>
+    <node id="n1nc"/>
+    <node id="n2nc"/>
+    <rel id="e1nc">
+      <attr name="label">
+        <string>Spub</string>
+      </attr>
+      <relend id="e1nc1" target="n1nc" startorder="0"/>
+    </rel>
+    <rel id="e2nc">
+      <attr name="label">
+        <string>Sprv</string>
+      </attr>
+      <relend id="e2nc1" target="n2nc" startorder="0"/>
+    </rel>
+    <rel id="e3nc">
+      <attr name="label">
+        <string>C</string>
+      </attr>
+      <relend id="e3nc1" target="n1nc" startorder="0"/>
+      <relend id="e3nc2" target="n2nc" startorder="1"/>
+    </rel>
+  </graph>
+
+  <graph id="erep" edgeids="true" hypergraph="true" edgemode="undirected">
+    <attr name="name">
+      <string>An external process can access a private server</string>
+    </attr>
+    <node id="n1ep"/>
+    <rel id="e1ep">
+      <attr name="label">
+        <string>Sprv</string>
+      </attr>
+      <relend id="e1ep1" target="n1ep" startorder="0"/>
+    </rel>
+    <rel id="e2ep">
+      <attr name="label">
+        <string>Pext</string>
+      </attr>
+      <relend id="e2ep1" target="n1ep" startorder="0"/>
+    </rel>
+  </graph>
+  
+</gxl>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<gxl>
+  <graph id="BakeryError" hypergraph="true" edgeids="true" edgemode="undirected">
+    <node id="_0"/>
+    <node id="_1"/>
+    <rel id="_3">
+      <attr name="label">
+        <string>S3</string>
+      </attr>
+      <relend target="_0" role="vertex" startorder="0"/>
+    </rel>
+    <rel id="_4">
+      <attr name="label">
+        <string>S3</string>
+      </attr>
+      <relend target="_1" role="vertex" startorder="0"/>
+    </rel>
+  </graph>
+</gxl>

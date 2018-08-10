@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<gxl>
+
+  <graph id="Adjacent eating 1" edgemode="undirected" edgeids="true" hypergraph="true">
+    <attr name="name">
+      <string>Two adjacent philisophers are eating (case 1)</string>
+    </attr>
+    <node id="g1_n1"/>
+    <node id="g1_n2"/>
+    <rel id="g1_e1">
+      <attr name="label">
+        <string>F</string>
+      </attr>
+      <relend target="g1_n1" role="vertex" startorder="0"/>
+      <relend target="g1_n2" role="vertex" startorder="1"/>
+    </rel>
+    <rel id="g1_e2">
+      <attr name="label">
+        <string>E</string>
+      </attr>
+      <relend target="g1_n1" role="vertex" startorder="0"/>
+    </rel>
+    <rel id="g1_e3">
+      <attr name="label">
+        <string>E</string>
+      </attr>
+      <relend target="g1_n2" role="vertex" startorder="0"/>
+    </rel>
+  </graph>
+
+  <graph id="Adjacent eating 2" edgemode="undirected" edgeids="true" hypergraph="true">
+    <attr name="name">
+      <string>Two adjacent philisophers are eating (case 2)</string>
+    </attr>
+    <node id="g2_n1"/>
+    <node id="g2_n2"/>
+    <rel id="g2_e1">
+      <attr name="label">
+        <string>OF</string>
+      </attr>
+      <relend target="g2_n1" role="vertex" startorder="0"/>
+      <relend target="g2_n2" role="vertex" startorder="1"/>
+    </rel>
+    <rel id="g2_e2">
+      <attr name="label">
+        <string>E</string>
+      </attr>
+      <relend target="g2_n1" role="vertex" startorder="0"/>
+    </rel>
+    <rel id="g2_e3">
+      <attr name="label">
+        <string>E</string>
+      </attr>
+      <relend target="g2_n2" role="vertex" startorder="0"/>
+    </rel>
+  </graph>
+</gxl>

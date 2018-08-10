@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<gxl>
+  <graph id="test" hypergraph="true" edgeids="true" edgemode="undirected">
+    <attr name="name">
+      <string>Termination detected, but active process still exists</string>
+    </attr>
+    <node id="_0"/>
+    <node id="_1"/>
+    <rel id="_2">
+      <attr name="label">
+        <string>A</string>
+      </attr>
+      <relend target="_0" role="vertex" startorder="0"/>
+      <relend target="_1" role="vertex" startorder="1"/>
+    </rel>
+    <rel id="_3">
+      <attr name="label">
+        <string>termination</string>
+      </attr>
+    </rel>
+  </graph>
+</gxl>

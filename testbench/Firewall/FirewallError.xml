@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<gxl>
+  <graph id="dummyleft" edgemode="undirected" edgeids="true" hypergraph="true">
+    <attr name="name">
+      <string>Firewall breached</string>
+    </attr>
+    <node id="n1"/>
+    <node id="n2"/>
+    <rel id="f1">
+      <attr name="label">
+        <string>Firewall</string>
+      </attr>
+      <relend id="f_relend1" target="n2" startorder="0"/>
+      <relend id="f_relend2" target="n1" startorder="1"/>
+    </rel>
+    <rel id="r1">
+      <attr name="label">
+        <string>UP</string>
+      </attr>
+      <relend id="r_relend" target="n2" startorder="0"/>
+    </rel>
+  </graph>
+</gxl>

@@ -1,0 +1,843 @@
+<?xml version="1.0"?>
+<gts id="BurnsMutEx">
+
+  <initial/>
+
+  <rule id="step1a">
+    <attr name="name">
+      <string>Step 1 - Init Flag value from 0</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step1a_lhsrg">
+        <graph id="step1a_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="step1a_lhsg_n0"/>
+          <rel id="step1a_lhsg_e0">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="step1a_lhsg_n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="step1a_lhsg_e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="step1a_lhsg_n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step1a_rhsrg">
+        <graph id="step1a_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="step1a_rhsg_n0"/>
+          <rel id="step1a_rhsg_e0">
+            <attr name="label">
+              <string>S2</string>
+            </attr>
+            <relend target="step1a_rhsg_n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="step1a_rhsg_e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="step1a_rhsg_n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="step1a_map">
+      <mapelem from="step1a_lhsg_n0" to="step1a_rhsg_n0"/>
+      <mapelem from="step1a_lhsg_e1" to="step1a_rhsg_e1"/>
+    </mapping>
+  </rule>
+
+  <rule id="step1b">
+    <attr name="name">
+      <string>Step 1 - Init Flag value from 1</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step1b_lhsrg">
+        <graph id="step1b_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="step1b_lhsg_n0"/>
+          <rel id="step1b_lhsg_e0">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="step1b_lhsg_n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="step1b_lhsg_e1">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="step1b_lhsg_n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step1b_rhsrg">
+        <graph id="step1b_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="step1b_rhsg_n0"/>
+          <rel id="step1b_rhsg_e0">
+            <attr name="label">
+              <string>S2</string>
+            </attr>
+            <relend target="step1b_rhsg_n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="step1b_rhsg_e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="step1b_rhsg_n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="step1b_map">
+      <mapelem from="step1b_lhsg_n0" to="step1b_rhsg_n0"/>
+    </mapping>
+  </rule>
+
+  <rule id="step2a">
+    <attr name="name">
+      <string>Step 2 - Goto step 1 if the flag of a smaller process is set</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step2a_lhsrg">
+        <graph id="step2a_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>S2</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step2a_rhsrg">
+        <graph id="step2a_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="step2a_map">
+      <mapelem from="n0" to="n0"/>
+      <mapelem from="n1" to="n1"/>
+      <mapelem from="e0" to="e0"/>
+      <mapelem from="e2" to="e2"/>
+    </mapping>
+  </rule>
+
+  <rule id="step2b">
+    <attr name="name">
+      <string>Step 2 - Goto step 3 if no flag of a smaller process is set</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step2b_lhsrg">
+        <graph id="step2b_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S2</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+            <relend target="n0" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e5">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="n1"/>
+          <elem ref="e1"/>
+          <elem ref="e2"/>
+        </quantification>
+        <quantification id="2">
+          <elem ref="e3"/>
+        </quantification>
+        <quantification id="3">
+          <elem ref="e4"/>
+        </quantification>
+        <quantification id="4">
+          <elem ref="n2"/>
+          <elem ref="e5"/>
+        </quantification>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step2b_rhsrg">
+        <graph id="step2b_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S3</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+            <relend target="n0" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e5">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="n1"/>
+          <elem ref="e1"/>
+          <elem ref="e2"/>
+        </quantification>
+        <quantification id="2">
+          <elem ref="e3"/>
+        </quantification>
+        <quantification id="3">
+          <elem ref="e4"/>
+        </quantification>
+        <quantification id="4">
+          <elem ref="n2"/>
+          <elem ref="e5"/>
+        </quantification>
+      </rulegraph>
+    </rhs>
+    <mapping id="step2b_map">
+      <mapelem from="n0" to="n0"/>
+      <mapelem from="n1" to="n1"/>
+      <mapelem from="n2" to="n2"/>
+      <mapelem from="e1" to="e1"/>
+      <mapelem from="e2" to="e2"/>
+      <mapelem from="e3" to="e3"/>
+      <mapelem from="e4" to="e4"/>
+      <mapelem from="e5" to="e5"/>
+    </mapping>
+  </rule>
+
+  <rule id="step3a">
+    <attr name="name">
+      <string>Step 3 - Set Flag to 1 from 0</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step3a_lhsrg">
+        <graph id="step3a_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S3</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step3a_rhsrg">
+        <graph id="step3a_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S4</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="step3a_map">
+      <mapelem from="n0" to="n0"/>
+    </mapping>
+  </rule>
+
+  <rule id="step3b">
+    <attr name="name">
+      <string>Step 3 - Set Flag to 1 from 1</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step3b_lhsrg">
+        <graph id="step3b_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S3</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step3b_rhsrg">
+        <graph id="step3b_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S4</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="step3b_map">
+      <mapelem from="n0" to="n0"/>
+      <mapelem from="e1" to="e1"/>
+    </mapping>
+  </rule>
+
+  <rule id="step4a">
+    <attr name="name">
+      <string>Step 4 - Goto step 1 if the flag of a smaller process is set</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step4a_lhsrg">
+        <graph id="step4a_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>S4</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step4a_rhsrg">
+        <graph id="step4a_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="step4a_map">
+      <mapelem from="n0" to="n0"/>
+      <mapelem from="n1" to="n1"/>
+      <mapelem from="e0" to="e0"/>
+      <mapelem from="e2" to="e2"/>
+    </mapping>
+  </rule>
+
+  <rule id="step4b">
+    <attr name="name">
+      <string>Step 4 - Goto step 5 if no flag of a smaller process is set</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step4b_lhsrg">
+        <graph id="step4b_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S4</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+            <relend target="n0" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e5">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="n1"/>
+          <elem ref="e1"/>
+          <elem ref="e2"/>
+        </quantification>
+        <quantification id="2">
+          <elem ref="e3"/>
+        </quantification>
+        <quantification id="3">
+          <elem ref="e4"/>
+        </quantification>
+        <quantification id="4">
+          <elem ref="n2"/>
+          <elem ref="e5"/>
+        </quantification>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step4b_rhsrg">
+        <graph id="step4b_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S5</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+            <relend target="n0" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e5">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="n1"/>
+          <elem ref="e1"/>
+          <elem ref="e2"/>
+        </quantification>
+        <quantification id="2">
+          <elem ref="e3"/>
+        </quantification>
+        <quantification id="3">
+          <elem ref="e4"/>
+        </quantification>
+        <quantification id="4">
+          <elem ref="n2"/>
+          <elem ref="e5"/>
+        </quantification>
+      </rulegraph>
+    </rhs>
+    <mapping id="step4b_map">
+      <mapelem from="n0" to="n0"/>
+      <mapelem from="n1" to="n1"/>
+      <mapelem from="n2" to="n2"/>
+      <mapelem from="e1" to="e1"/>
+      <mapelem from="e2" to="e2"/>
+      <mapelem from="e3" to="e3"/>
+      <mapelem from="e4" to="e4"/>
+      <mapelem from="e5" to="e5"/>
+    </mapping>
+  </rule>
+
+  <rule id="step5">
+    <attr name="name">
+      <string>Step 5 - Goto step 6 as soon as all larger processes set their flag to 0</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step5_lhsrg">
+        <graph id="step5_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S5</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+            <relend target="n0" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e5">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="n1"/>
+          <elem ref="e2"/>
+        </quantification>
+        <quantification id="2">
+          <elem ref="e3"/>
+        </quantification>
+        <quantification id="3">
+          <elem ref="e4"/>
+        </quantification>
+        <quantification id="4">
+          <elem ref="n2"/>
+          <elem ref="e5"/>
+          <elem ref="e1"/>
+        </quantification>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step5_rhsrg">
+        <graph id="step5_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>S6</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+            <relend target="n0" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e5">
+            <attr name="label">
+              <string>N</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+            <relend target="n2" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="n1"/>
+          <elem ref="e2"/>
+        </quantification>
+        <quantification id="2">
+          <elem ref="e3"/>
+        </quantification>
+        <quantification id="3">
+          <elem ref="e4"/>
+        </quantification>
+        <quantification id="4">
+          <elem ref="n2"/>
+          <elem ref="e1"/>
+          <elem ref="e5"/>
+        </quantification>
+      </rulegraph>
+    </rhs>
+    <mapping id="step4b_map">
+      <mapelem from="n0" to="n0"/>
+      <mapelem from="n1" to="n1"/>
+      <mapelem from="n2" to="n2"/>
+      <mapelem from="e1" to="e1"/>
+      <mapelem from="e2" to="e2"/>
+      <mapelem from="e3" to="e3"/>
+      <mapelem from="e4" to="e4"/>
+      <mapelem from="e5" to="e5"/>
+    </mapping>
+  </rule>
+
+  <rule id="step6a">
+    <attr name="name">
+      <string>Step 6 - Set Flag to 0 (from 0) and goto step 1</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step6a_lhsrg">
+        <graph id="step6a_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>S6</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step6a_rhsrg">
+        <graph id="step6a_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="step6a_map">
+      <mapelem from="n0" to="n0"/>
+      <mapelem from="e0" to="e0"/>
+    </mapping>
+  </rule>
+
+  <rule id="step6b">
+    <attr name="name">
+      <string>Step 6 - Set Flag to 0 (from 1) and goto step 1</string>
+    </attr>
+    <lhs>
+      <rulegraph id="step6b_lhsrg">
+        <graph id="step6b_lhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>F1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>S6</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="step6b_rhsrg">
+        <graph id="step6b_rhsg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n0"/>
+          <rel id="e0">
+            <attr name="label">
+              <string>F0</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e1">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="n0" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="step6b_map">
+      <mapelem from="n0" to="n0"/>
+    </mapping>
+  </rule>
+
+</gts>

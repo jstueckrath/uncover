@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<gts id="MultiUserSystem">
+
+  <initial>
+    <graph id="init" edgeids="true" hypergraph="true" edgemode="undirected">
+      <attr name="name">
+        <string>System without processes</string>
+      </attr>
+      <node id="n1"/>
+      <rel id="e1">
+        <attr name="label">
+          <string>B</string>
+        </attr>
+        <relend target="n1" role="vertex" startorder="0"/>
+      </rel>
+      <rel id="e2">
+        <attr name="label">
+          <string>E</string>
+        </attr>
+        <relend target="n1" role="vertex" startorder="0"/>
+      </rel>
+    </graph>
+  </initial>
+
+  <rule id="spawn">
+    <attr name="name">
+      <string>Spawn a new process in state 1</string>
+    </attr>
+    <lhs>
+      <rulegraph id="spawn_l">
+        <graph id="spawn_lg" edgemode="undirected" edgeids="true" hypergraph="true"/>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="spawn_r">
+        <graph id="spawn_rg" edgemode="undirected" edgeids="true" hypergraph="true"> 
+          <node id="n1"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="spawn_m"/>
+  </rule>
+
+  <rule id="S1toS2">
+    <attr name="name">
+      <string>Process generates a new highest ticket value</string>
+    </attr>
+    <lhs>
+      <rulegraph id="S1toS2_l">
+        <graph id="S1toS2_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>E</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="S1toS2_r">
+        <graph id="S1toS2_rg" edgemode="undirected" edgeids="true" hypergraph="true"> 
+          <node id="n1"/>
+          <node id="n2"/>
+          <node id="n3"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>E</string>
+            </attr>
+            <relend target="n3" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>S2</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>leq</string>
+            </attr>
+            <relend target="n3" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>TV</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+            <relend target="n3" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="S1toS2_m">
+      <mapelem from="n1" to="n1" />
+      <mapelem from="n2" to="n2" />
+    </mapping>
+  </rule>
+
+  <rule id="S2toS3">
+    <attr name="name">
+      <string>Process enters critical section if it has lowest ticket</string>
+    </attr>
+    <lhs>
+      <rulegraph id="S2toS3_l">
+        <graph id="S2toS3_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>B</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>S2</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>TV</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="S2toS3_r">
+        <graph id="S2toS3_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>B</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>S3</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>TV</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="S2toS3_m">
+      <mapelem from="n1" to="n1"/>
+      <mapelem from="n2" to="n2"/>
+      <mapelem from="e1" to="e1"/>
+      <mapelem from="e3" to="e3"/>
+    </mapping>
+  </rule>
+
+  <rule id="S3toS1a">
+    <attr name="name">
+      <string>Process leaves critical section; there are still remaining tickets</string>
+    </attr>
+    <lhs>
+      <rulegraph id="S3toS1a_l">
+        <graph id="S3toS1a_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n1"/>
+          <node id="n2"/>
+          <node id="n3"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>B</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>S3</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>TV</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>leq</string>
+            </attr>
+            <relend target="n3" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="S3toS1a_r">
+        <graph id="S3toS1a_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>B</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="S3toS1a_m">
+      <mapelem from="n2" to="n2"/>
+      <mapelem from="n3" to="n1"/>
+    </mapping>
+  </rule>
+
+  <rule id="S3toS1b">
+    <attr name="name">
+      <string>Process leaves critical section; there are no remaining tickets</string>
+    </attr>
+    <lhs>
+      <rulegraph id="S3toS1b_l">
+        <graph id="S3toS1b_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>B</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>E</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>S3</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e4">
+            <attr name="label">
+              <string>TV</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+            <relend target="n1" role="vertex" startorder="1"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="S3toS1b_r">
+        <graph id="S3toS1b_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="n1"/>
+          <node id="n2"/>
+          <rel id="e1">
+            <attr name="label">
+              <string>B</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e2">
+            <attr name="label">
+              <string>E</string>
+            </attr>
+            <relend target="n1" role="vertex" startorder="0"/>
+          </rel>
+          <rel id="e3">
+            <attr name="label">
+              <string>S1</string>
+            </attr>
+            <relend target="n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="S3toS1b_m">
+      <mapelem from="n1" to="n1"/>
+      <mapelem from="n2" to="n2"/>
+      <mapelem from="e1" to="e1"/>
+      <mapelem from="e2" to="e2"/>
+    </mapping>
+  </rule>
+
+</gts>

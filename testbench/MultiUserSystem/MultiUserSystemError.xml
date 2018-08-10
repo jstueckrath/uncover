@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<gxl>
+  <graph id="MultiUserError" hypergraph="true" edgeids="true" edgemode="undirected">
+    <attr name="name">
+      <string>Two users have write access to the same object</string>
+    </attr>
+    <node id="_0"/>
+    <node id="_1"/>
+    <node id="_2"/>
+    <rel id="_3">
+      <attr name="label">
+        <string>U</string>
+      </attr>
+      <relend target="_0" role="vertex" startorder="0"/>
+    </rel>
+    <rel id="_4">
+      <attr name="label">
+        <string>U</string>
+      </attr>
+      <relend target="_1" role="vertex" startorder="0"/>
+    </rel>
+    <rel id="_5">
+      <attr name="label">
+        <string>O</string>
+      </attr>
+      <relend target="_2" role="vertex" startorder="0"/>
+    </rel>
+    <rel id="_6">
+      <attr name="label">
+        <string>W</string>
+      </attr>
+      <relend target="_0" role="vertex" startorder="0"/>
+      <relend target="_2" role="vertex" startorder="1"/>
+    </rel>
+    <rel id="_7">
+      <attr name="label">
+        <string>W</string>
+      </attr>
+      <relend target="_1" role="vertex" startorder="0"/>
+      <relend target="_2" role="vertex" startorder="1"/>
+    </rel>
+  </graph>
+</gxl>

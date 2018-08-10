@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<gts id="MultiUserSystem">
+
+  <initial/>
+
+  <rule id="aquireFork1">
+    <attr name="name">
+      <string>Hungry philosopher takes an adjacent fork (variant 1)</string>
+    </attr>
+    <lhs>
+      <rulegraph id="aquireFork1_l">
+        <graph id="aquireFork1_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="aquireFork1_lg_n1"/>
+          <node id="aquireFork1_lg_n2"/>
+          <rel id="aquireFork1_lg_e1">
+            <attr name="label">
+              <string>F</string>
+            </attr>
+            <relend target="aquireFork1_lg_n1" role="vertex" startorder="0"/>
+            <relend target="aquireFork1_lg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="aquireFork1_lg_e2">
+            <attr name="label">
+              <string>H</string>
+            </attr>
+            <relend target="aquireFork1_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="aquireFork1_r">
+        <graph id="aquireFork1_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="aquireFork1_rg_n1"/>
+          <node id="aquireFork1_rg_n2"/>
+          <rel id="aquireFork1_rg_e1">
+            <attr name="label">
+              <string>OF</string>
+            </attr>
+            <relend target="aquireFork1_rg_n1" role="vertex" startorder="0"/>
+            <relend target="aquireFork1_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="aquireFork1_rg_e2">
+            <attr name="label">
+              <string>H</string>
+            </attr>
+            <relend target="aquireFork1_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="aquireFork1_m">
+      <mapelem from="aquireFork1_lg_n1" to="aquireFork1_rg_n1"/>
+      <mapelem from="aquireFork1_lg_n2" to="aquireFork1_rg_n2"/>
+      <mapelem from="aquireFork1_lg_e2" to="aquireFork1_rg_e2"/>
+    </mapping>
+  </rule>
+
+  <rule id="aquireFork2">
+    <attr name="name">
+      <string>Hungry philosopher takes an adjacent fork (variant 2)</string>
+    </attr>
+    <lhs>
+      <rulegraph id="aquireFork2_l">
+        <graph id="aquireFork2_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="aquireFork2_lg_n1"/>
+          <node id="aquireFork2_lg_n2"/>
+          <rel id="aquireFork2_lg_e1">
+            <attr name="label">
+              <string>F</string>
+            </attr>
+            <relend target="aquireFork2_lg_n2" role="vertex" startorder="0"/>
+            <relend target="aquireFork2_lg_n1" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="aquireFork2_lg_e2">
+            <attr name="label">
+              <string>H</string>
+            </attr>
+            <relend target="aquireFork2_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="aquireFork2_r">
+        <graph id="aquireFork2_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="aquireFork2_rg_n1"/>
+          <node id="aquireFork2_rg_n2"/>
+          <rel id="aquireFork2_rg_e1">
+            <attr name="label">
+              <string>OF</string>
+            </attr>
+            <relend target="aquireFork2_rg_n1" role="vertex" startorder="0"/>
+            <relend target="aquireFork2_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="aquireFork2_rg_e2">
+            <attr name="label">
+              <string>H</string>
+            </attr>
+            <relend target="aquireFork2_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="aquireFork2_m">
+      <mapelem from="aquireFork2_lg_n1" to="aquireFork2_rg_n1"/>
+      <mapelem from="aquireFork2_lg_n2" to="aquireFork2_rg_n2"/>
+      <mapelem from="aquireFork2_lg_e2" to="aquireFork2_rg_e2"/>
+    </mapping>
+  </rule>
+
+  <rule id="releaseFork">
+    <attr name="name">
+      <string>Hungry philosopher gives back an adjacent fork</string>
+    </attr>
+    <lhs>
+      <rulegraph id="releaseFork_l">
+        <graph id="releaseFork_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="releaseFork_lg_n1"/>
+          <node id="releaseFork_lg_n2"/>
+          <rel id="releaseFork_lg_e1">
+            <attr name="label">
+              <string>OF</string>
+            </attr>
+            <relend target="releaseFork_lg_n1" role="vertex" startorder="0"/>
+            <relend target="releaseFork_lg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="releaseFork_lg_e2">
+            <attr name="label">
+              <string>H</string>
+            </attr>
+            <relend target="releaseFork_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="releaseFork_r">
+        <graph id="releaseFork_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="releaseFork_rg_n1"/>
+          <node id="releaseFork_rg_n2"/>
+          <rel id="releaseFork_rg_e1">
+            <attr name="label">
+              <string>F</string>
+            </attr>
+            <relend target="releaseFork_rg_n1" role="vertex" startorder="0"/>
+            <relend target="releaseFork_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="releaseFork_rg_e2">
+            <attr name="label">
+              <string>H</string>
+            </attr>
+            <relend target="releaseFork_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="releaseFork_m">
+      <mapelem from="releaseFork_lg_n1" to="releaseFork_rg_n1"/>
+      <mapelem from="releaseFork_lg_n2" to="releaseFork_rg_n2"/>
+      <mapelem from="releaseFork_lg_e2" to="releaseFork_rg_e2"/>
+    </mapping>
+  </rule>
+
+  <rule id="getHungry">
+    <attr name="name">
+      <string>Thinking philosopher gets hungry</string>
+    </attr>
+    <lhs>
+      <rulegraph id="getHungry_l">
+        <graph id="getHungry_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="getHungry_lg_n"/>
+          <rel id="getHungry_lg_e">
+            <attr name="label">
+              <string>T</string>
+            </attr>
+            <relend target="getHungry_lg_n" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="getHungry_r">
+        <graph id="getHungry_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="getHungry_rg_n"/>
+          <rel id="getHungry_rg_e">
+            <attr name="label">
+              <string>H</string>
+            </attr>
+            <relend target="getHungry_rg_n" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+      </rulegraph>
+    </rhs>
+    <mapping id="getHungry_m">
+      <mapelem from="getHungry_lg_n" to="getHungry_rg_n"/>
+    </mapping>
+  </rule>
+
+  <rule id="startEating">
+    <attr name="name">
+      <string>Hungry philosopher which has all adjacent forks starts eating</string>
+    </attr>
+    <lhs>
+      <rulegraph id="startEating_l">
+        <graph id="startEating_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="startEating_lg_n1"/>
+          <node id="startEating_lg_n2"/>
+          <rel id="startEating_lg_e1">
+            <attr name="label">
+              <string>OF</string>
+            </attr>
+            <relend target="startEating_lg_n1" role="vertex" startorder="0"/>
+            <relend target="startEating_lg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="startEating_lg_e2">
+            <attr name="label">
+              <string>H</string>
+            </attr>
+            <relend target="startEating_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="startEating_lg_n1"/>
+          <elem ref="startEating_lg_e1"/>
+        </quantification>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="startEating_r">
+        <graph id="startEating_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="startEating_rg_n1"/>
+          <node id="startEating_rg_n2"/>
+          <rel id="startEating_rg_e1">
+            <attr name="label">
+              <string>OF</string>
+            </attr>
+            <relend target="startEating_rg_n1" role="vertex" startorder="0"/>
+            <relend target="startEating_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="startEating_rg_e2">
+            <attr name="label">
+              <string>E</string>
+            </attr>
+            <relend target="startEating_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="startEating_rg_n1"/>
+          <elem ref="startEating_rg_e1"/>
+        </quantification>
+      </rulegraph>
+    </rhs>
+    <mapping id="startEating_m">
+      <mapelem from="startEating_lg_n1" to="startEating_rg_n1"/>
+      <mapelem from="startEating_lg_n2" to="startEating_rg_n2"/>
+      <mapelem from="startEating_lg_e1" to="startEating_rg_e1"/>
+    </mapping>
+  </rule>
+
+  <rule id="releaseAllForks">
+    <attr name="name">
+      <string>Philosopher finished eating and gives back all forks</string>
+    </attr>
+    <lhs>
+      <rulegraph id="releaseAllForks_l">
+        <graph id="releaseAllForks_lg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="releaseAllForks_lg_n1"/>
+          <node id="releaseAllForks_lg_n2"/>
+          <rel id="releaseAllForks_lg_e1">
+            <attr name="label">
+              <string>OF</string>
+            </attr>
+            <relend target="releaseAllForks_lg_n1" role="vertex" startorder="0"/>
+            <relend target="releaseAllForks_lg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="releaseAllForks_lg_e2">
+            <attr name="label">
+              <string>E</string>
+            </attr>
+            <relend target="releaseAllForks_lg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="releaseAllForks_lg_n1"/>
+          <elem ref="releaseAllForks_lg_e1"/>
+        </quantification>
+      </rulegraph>
+    </lhs>
+    <rhs>
+      <rulegraph id="releaseAllForks_r">
+        <graph id="releaseAllForks_rg" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="releaseAllForks_rg_n1"/>
+          <node id="releaseAllForks_rg_n2"/>
+          <rel id="releaseAllForks_rg_e1">
+            <attr name="label">
+              <string>F</string>
+            </attr>
+            <relend target="releaseAllForks_rg_n1" role="vertex" startorder="0"/>
+            <relend target="releaseAllForks_rg_n2" role="vertex" startorder="1"/>
+          </rel>
+          <rel id="releaseAllForks_rg_e2">
+            <attr name="label">
+              <string>T</string>
+            </attr>
+            <relend target="releaseAllForks_rg_n2" role="vertex" startorder="0"/>
+          </rel>
+        </graph>
+        <quantification id="1">
+          <elem ref="releaseAllForks_rg_n1"/>
+          <elem ref="releaseAllForks_rg_e1"/>
+        </quantification>
+      </rulegraph>
+    </rhs>
+    <mapping id="releaseAllForks_m">
+      <mapelem from="releaseAllForks_lg_n1" to="releaseAllForks_rg_n1"/>
+      <mapelem from="releaseAllForks_lg_n2" to="releaseAllForks_rg_n2"/>
+    </mapping>
+  </rule>
+
+</gts>

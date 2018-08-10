@@ -1,0 +1,742 @@
+<?xml version="1.0"?>
+<GTS id="Firewall system">
+
+  <Initial>
+
+    <Graph id="initG1" edgeids="true" hypergraph="true" edgemode="undirected">
+      <attr name="name">
+        <string>Initial Graph 1</string>
+      </attr>
+      <node id="v1"/>
+      <node id="v2"/>
+      <node id="v5"/>
+      <node id="v6"/>
+      <rel id="L1">
+        <attr name="label">
+          <string>L</string>
+        </attr>
+        <relend id="l1_relend1" target="v1" startorder="0"/>
+        <relend id="l1_relend2" target="v2" startorder="1"/>
+      </rel>
+      <rel id="firewall1">
+        <attr name="label">
+          <string>Firewall</string>
+        </attr>
+        <relend id="f1_relend1" target="v5" startorder="0"/>
+        <relend id="f1_relend2" target="v2" startorder="1"/>
+      </rel>
+      <rel id="L3">
+        <attr name="label">
+          <string>L</string>
+        </attr>
+        <relend id="l3_relend1" target="v6" startorder="0"/>
+        <relend id="l3_relend2" target="v5" startorder="1"/>
+      </rel>
+      <rel id="P1">
+        <attr name="label">
+          <string>UP</string>
+        </attr>
+        <relend id="p_relend1" target="v1" startorder="0"/>
+      </rel>
+    </Graph>
+
+    <Graph id="Start graph" edgeids="true" hypergraph="true" edgemode="undirected">
+      <attr name="name">
+        <string>Initial Graph 2</string>
+      </attr>
+      <node id="v1" />
+      <node id="v2" />
+      <node id="v3" />
+      <node id="v4" />
+      <node id="v5" />
+      <node id="v6" />
+      <rel id="L1">
+        <attr name="label">
+          <string>L</string>
+        </attr>
+        <relend id="l1_relend1" target="v1" startorder="0"/>
+        <relend id="l1_relend2" target="v2" startorder="1"/>
+      </rel>
+      <rel id="conn">
+        <attr name="label">
+          <string>C</string>
+        </attr>
+        <relend id="conn_relend1" target="v2" startorder="0"/>
+        <relend id="conn_relend2" target="v3" startorder="1"/>
+      </rel>
+      <rel id="L2">
+        <attr name="label">
+          <string>L</string>
+        </attr>
+        <relend id="l2_relend1" target="v4" startorder="0"/>
+        <relend id="l2_relend2" target="v3" startorder="1"/>
+      </rel>
+      <rel id="firewall1">
+        <attr name="label">
+          <string>Firewall</string>
+        </attr>
+        <relend id="f1_relend1" target="v5" startorder="0"/>
+        <relend id="f1_relend2" target="v2" startorder="1"/>
+      </rel>
+      <rel id="firewall2">
+        <attr name="label">
+          <string>Firewall</string>
+        </attr>
+        <relend id="f2_relend1" target="v5" startorder="0"/>
+        <relend id="f2_relend2" target="v3" startorder="1"/>
+      </rel>
+      <rel id="L3">
+        <attr name="label">
+          <string>L</string>
+        </attr>
+        <relend id="l3_relend1" target="v6" startorder="0"/>
+        <relend id="l3_relend2" target="v5" startorder="1"/>
+      </rel>
+      <rel id="P1">
+        <attr name="label">
+          <string>UP</string>
+        </attr>
+        <relend id="p_relend1" target="v1" startorder="0"/>
+      </rel>
+      <rel id="P2">
+        <attr name="label">
+          <string>UP</string>
+        </attr>
+        <relend id="p_relend2" target="v4" startorder="0"/>
+      </rel>
+    </Graph>
+
+  </Initial>
+
+  <Rule id="create proc">
+    <attr name="name">
+      <string>Create process</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="create proc Left Hand RuleGraph">
+        <Graph id="create proc lefthandGraph" edgemode="directed" edgeids="true" hypergraph="false">
+          <node id="r2_lhs_1"/>
+          <node id="r2_lhs_2"/>
+          <edge id="r2_L" from="r2_lhs_1" to="r2_lhs_2">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+          </edge>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="create proc Right Hand RuleGraph">
+        <Graph id="create righthandGraph" edgeids="true" hypergraph="true" edgemode="undirected">
+          <node id="r2_rhs_1"/>
+          <node id="r2_rhs_2"/>
+          <rel id="r2_rhs_p">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r2_rhs_p_relend1" target="r2_rhs_1" startorder="0"/>
+          </rel>
+          <rel id="r2_rhs_l">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r2_rhs_sl_relend1" target="r2_rhs_1" startorder="0"/>
+            <relend id="r2_rhs_sl_relend2" target="r2_rhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r2_mapping">
+      <MapElem from="r2_lhs_1" to="r2_rhs_1"/>
+      <MapElem from="r2_lhs_2" to="r2_rhs_2"/>
+      <MapElem from="r2_L" to="r2_rhs_l"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="UP leave loc">
+    <attr name="name">
+      <string>UP leave location</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="s-leave loc Left Hand RuleGraph">
+        <Graph id="s-leave loc lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r3_lhs_1"/>
+          <node id="r3_lhs_2"/>
+          <rel id="r3_lhs_p">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r3_lhs_p_relend1" target="r3_lhs_1" startorder="0"/>
+          </rel>
+          <rel id="r3_lhs_sl">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r3_lhs_sl_relend1" target="r3_lhs_1" startorder="0"/>
+            <relend id="r3_lhs_sl_relend2" target="r3_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="s-leave loc Right Hand RuleGraph">
+        <Graph id="s-leave loc righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r3_rhs_1"/>
+          <node id="r3_rhs_2"/>
+          <rel id="r3_rhs_sl">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r3_rhs_sl_relend1" target="r3_rhs_1" startorder="0"/>
+            <relend id="r3_rhs_sl_relend2" target="r3_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r3_rhs_q">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r3_rhs_q_relend1" target="r3_rhs_2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r3_mapping">
+      <MapElem from="r3_lhs_1" to="r3_rhs_1"/>
+      <MapElem from="r3_lhs_2" to="r3_rhs_2"/>
+      <MapElem from="r3_lhs_sl" to="r3_rhs_sl"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="UP enter loc">
+    <attr name="name">
+      <string>UP enter location</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="s-enter loc Left Hand RuleGraph">
+        <Graph id="s-enter loc lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r4_lhs_1"/>
+          <node id="r4_lhs_2"/>
+          <rel id="r4_lhs_sl">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r4_lhs_sl_relend1" target="r4_lhs_1" startorder="0"/>
+            <relend id="r4_lhs_sl_relend2" target="r4_lhs_2" startorder="1"/>
+          </rel>
+          <rel id="r4_lhs_q">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r4_lhs_q_relend1" target="r4_lhs_2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="s-enter loc Right Hand RuleGraph">
+        <Graph id="s-enter loc righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r4_rhs_1"/>
+          <node id="r4_rhs_2"/>
+          <rel id="r4_rhs_p">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r4_rhs_p_relend1" target="r4_rhs_1" startorder="0"/>
+          </rel>
+          <rel id="r4_rhs_sl">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r4_rhs_sl_relend1" target="r4_rhs_1" startorder="0"/>
+            <relend id="r4_rhs_sl_relend2" target="r4_rhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r4_mapping">
+      <MapElem from="r4_lhs_1" to="r4_rhs_1"/>
+      <MapElem from="r4_lhs_2" to="r4_rhs_2"/>
+      <MapElem from="r4_lhs_sl" to="r4_rhs_sl"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="SP leave loc">
+    <attr name="name">
+      <string>SP leave location</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="leave loc Left Hand RuleGraph">
+        <Graph id="leave loc lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r5_lhs_1"/>
+          <node id="r5_lhs_2"/>
+          <rel id="r5_lhs_p">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r5_lhs_p_relend1" target="r5_lhs_1" startorder="0"/>
+          </rel>
+          <rel id="r5_lhs_l">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r5_lhs_l_relend1" target="r5_lhs_1" startorder="0"/>
+            <relend id="r5_lhs_l_relend2" target="r5_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="leave loc Right Hand RuleGraph">
+        <Graph id="leave loc righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r5_rhs_1"/>
+          <node id="r5_rhs_2"/>
+          <rel id="r5_rhs_l">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r5_rhs_l_relend1" target="r5_rhs_1" startorder="0"/>
+            <relend id="r5_rhs_l_relend2" target="r5_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r5_rhs_q">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r5_rhs_q_relend1" target="r5_rhs_2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r5_mapping">
+      <MapElem from="r5_lhs_1" to="r5_rhs_1"/>
+      <MapElem from="r5_lhs_2" to="r5_rhs_2"/>
+      <MapElem from="r5_lhs_l" to="r5_rhs_l"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="SP enter loc">
+    <attr name="name">
+      <string>SP enter location</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="enter loc Left Hand RuleGraph">
+        <Graph id="enter loc lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r6_lhs_1"/>
+          <node id="r6_lhs_2"/>
+          <rel id="r6_lhs_l">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r6_lhs_l_relend1" target="r6_lhs_1" startorder="0"/>
+            <relend id="r6_lhs_l_relend2" target="r6_lhs_2" startorder="1"/>
+          </rel>
+          <rel id="r6_lhs_q">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r6_lhs_q_relend1" target="r6_lhs_2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="enter loc Right Hand RuleGraph">
+        <Graph id="enter loc righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r6_rhs_1"/>
+          <node id="r6_rhs_2"/>
+          <rel id="r6_rhs_p">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r6_rhs_p_relend1" target="r6_rhs_1" startorder="0"/>
+          </rel>
+          <rel id="r6_rhs_l">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r6_rhs_l_relend1" target="r6_rhs_1" startorder="0"/>
+            <relend id="r6_rhs_l_relend2" target="r6_rhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r6_mapping">
+      <MapElem from="r6_lhs_1" to="r6_rhs_1"/>
+      <MapElem from="r6_lhs_2" to="r6_rhs_2"/>
+      <MapElem from="r6_lhs_l" to="r6_rhs_l"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="SP cross conn">
+    <attr name="name">
+      <string>SP cross connection forward</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="s-cross conn Left Hand RuleGraph">
+        <Graph id="s-cross conn lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r7_lhs_1"/>
+          <node id="r7_lhs_2"/>
+          <rel id="r7_lhs_p">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r7_lhs_p_relend1" target="r7_lhs_1" startorder="0"/>
+          </rel>
+          <rel id="r7_lhs_sconn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r7_lhs_sconn_relend1" target="r7_lhs_1" startorder="0"/>
+            <relend id="r7_lhs_sconn_relend2" target="r7_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="s-cross conn Right Hand RuleGraph">
+        <Graph id="s-cross conn righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r7_rhs_1"/>
+          <node id="r7_rhs_2"/>
+          <rel id="r7_rhs_sconn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r7_rhs_sconn_relend1" target="r7_rhs_1" startorder="0"/>
+            <relend id="r7_rhs_sconn_relend2" target="r7_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r7_rhs_q">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r7_rhs_q_relend1" target="r7_rhs_2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r7_mapping">
+      <MapElem from="r7_lhs_1" to="r7_rhs_1"/>
+      <MapElem from="r7_lhs_2" to="r7_rhs_2"/>
+      <MapElem from="r7_lhs_sconn" to="r7_rhs_sconn"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="UP cross conn">
+    <attr name="name">
+      <string>UP cross connection forward</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="cross conn Left Hand RuleGraph">
+        <Graph id="cross conn lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r9_lhs_1"/>
+          <node id="r9_lhs_2"/>
+          <rel id="r9_lhs_p">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r9_lhs_p_relend1" target="r9_lhs_1" startorder="0"/>
+          </rel>
+          <rel id="r9_lhs_conn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r9_lhs_conn_relend1" target="r9_lhs_1" startorder="0"/>
+            <relend id="r9_lhs_conn_relend2" target="r9_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cross conn Right Hand RuleGraph">
+        <Graph id="cross conn righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r9_rhs_1"/>
+          <node id="r9_rhs_2"/>
+          <rel id="r9_rhs_conn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r9_rhs_conn_relend1" target="r9_rhs_1" startorder="0"/>
+            <relend id="r9_rhs_conn_relend2" target="r9_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r9_rhs_q">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r9_rhs_q_relend1" target="r9_rhs_2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r9_mapping">
+      <MapElem from="r9_lhs_1" to="r9_rhs_1"/>
+      <MapElem from="r9_lhs_2" to="r9_rhs_2"/>
+      <MapElem from="r9_lhs_conn" to="r9_rhs_conn"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="SP leave conn">
+    <attr name="name">
+      <string>SP cross connection backward</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="s-cross conn Left Hand RuleGraph">
+        <Graph id="s-cross conn lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r7_lhs_1"/>
+          <node id="r7_lhs_2"/>
+          <rel id="r7_lhs_p">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r7_lhs_p_relend1" target="r7_lhs_2" startorder="0"/>
+          </rel>
+          <rel id="r7_lhs_sconn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r7_lhs_sconn_relend1" target="r7_lhs_1" startorder="0"/>
+            <relend id="r7_lhs_sconn_relend2" target="r7_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="s-cross conn Right Hand RuleGraph">
+        <Graph id="s-cross conn righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r7_rhs_1"/>
+          <node id="r7_rhs_2"/>
+          <rel id="r7_rhs_sconn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r7_rhs_sconn_relend1" target="r7_rhs_1" startorder="0"/>
+            <relend id="r7_rhs_sconn_relend2" target="r7_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r7_rhs_q">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r7_rhs_q_relend1" target="r7_rhs_1" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r71_mapping">
+      <MapElem from="r7_lhs_1" to="r7_rhs_1"/>
+      <MapElem from="r7_lhs_2" to="r7_rhs_2"/>
+      <MapElem from="r7_lhs_sconn" to="r7_rhs_sconn"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="UP leave conn">
+    <attr name="name">
+      <string>UP cross connection backward</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="cross conn Left Hand RuleGraph">
+        <Graph id="cross conn lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r9_lhs_1"/>
+          <node id="r9_lhs_2"/>
+          <rel id="r9_lhs_p">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r9_lhs_p_relend1" target="r9_lhs_2" startorder="0"/>
+          </rel>
+          <rel id="r9_lhs_conn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r9_lhs_conn_relend1" target="r9_lhs_1" startorder="0"/>
+            <relend id="r9_lhs_conn_relend2" target="r9_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cross conn Right Hand RuleGraph">
+        <Graph id="cross conn righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r9_rhs_1"/>
+          <node id="r9_rhs_2"/>
+          <rel id="r9_rhs_conn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r9_rhs_conn_relend1" target="r9_rhs_1" startorder="0"/>
+            <relend id="r9_rhs_conn_relend2" target="r9_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r9_rhs_q">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r9_rhs_q_relend1" target="r9_rhs_1" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r91_mapping">
+      <MapElem from="r9_lhs_1" to="r9_rhs_1"/>
+      <MapElem from="r9_lhs_2" to="r9_rhs_2"/>
+      <MapElem from="r9_lhs_conn" to="r9_rhs_conn"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="SP cross firewall">
+    <attr name="name">
+      <string>SP cross firewall</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="cross firewall Left Hand RuleGraph">
+        <Graph id="cross firewall lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r11_lhs_1"/>
+          <node id="r11_lhs_2"/>
+          <rel id="r11_lhs_p">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r11_lhs_p_relend1" target="r11_lhs_1" startorder="0"/>
+          </rel>
+          <rel id="r11_lhs_firewall">
+            <attr name="label">
+              <string>Firewall</string>
+            </attr>
+            <relend id="r11_lhs_firewall_relend1" target="r11_lhs_1" startorder="0"/>
+            <relend id="r11_lhs_firewall_relend2" target="r11_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cross firewall Right Hand RuleGraph">
+        <Graph id="cross firewall righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r11_rhs_1"/>
+          <node id="r11_rhs_2"/>
+          <rel id="r11_rhs_firewall">
+            <attr name="label">
+              <string>Firewall</string>
+            </attr>
+            <relend id="r11_rhs_firewall_relend1" target="r11_rhs_1" startorder="0"/>
+            <relend id="r11_rhs_firewall_relend2" target="r11_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r11_rhs_q">
+            <attr name="label">
+              <string>SP</string>
+            </attr>
+            <relend id="r11_rhs_q_relend1" target="r11_rhs_2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r11_mapping">
+      <MapElem from="r11_lhs_1" to="r11_rhs_1"/>
+      <MapElem from="r11_lhs_2" to="r11_rhs_2"/>
+      <MapElem from="r11_lhs_firewall" to="r11_rhs_firewall"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="UP cross firewall">
+    <attr name="name">
+      <string>UP cross firewall</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="cross firewall Left Hand RuleGraph">
+        <Graph id="cross firewall lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r11_lhs_1"/>
+          <node id="r11_lhs_2"/>
+          <rel id="r11_lhs_p">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r11_lhs_p_relend1" target="r11_lhs_1" startorder="0"/>
+          </rel>
+          <rel id="r11_lhs_firewall">
+            <attr name="label">
+              <string>Firewall</string>
+            </attr>
+            <relend id="r11_lhs_firewall_relend1" target="r11_lhs_1" startorder="0"/>
+            <relend id="r11_lhs_firewall_relend2" target="r11_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="cross firewall Right Hand RuleGraph">
+        <Graph id="cross firewall righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r11_rhs_1"/>
+          <node id="r11_rhs_2"/>
+          <rel id="r11_rhs_firewall">
+            <attr name="label">
+              <string>Firewall</string>
+            </attr>
+            <relend id="r11_rhs_firewall_relend1" target="r11_rhs_1" startorder="0"/>
+            <relend id="r11_rhs_firewall_relend2" target="r11_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r11_rhs_q">
+            <attr name="label">
+              <string>UP</string>
+            </attr>
+            <relend id="r11_rhs_q_relend1" target="r11_rhs_2" startorder="0"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r111_mapping">
+      <MapElem from="r11_lhs_1" to="r11_rhs_1"/>
+      <MapElem from="r11_lhs_2" to="r11_rhs_2"/>
+      <MapElem from="r11_lhs_firewall" to="r11_rhs_firewall"/>
+    </Mapping>
+  </Rule>
+
+  <Rule id="create loc">
+    <attr name="name">
+      <string>Create connected location</string>
+    </attr>
+    <LHS>
+      <RuleGraph id="create loc Left Hand RuleGraph">
+        <Graph id="create loc lefthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r13_lhs_1"/>
+          <node id="r13_lhs_2"/>
+          <rel id="r13_lhs_p">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r13_lhs_p_relend1" target="r13_lhs_1" startorder="0"/>
+            <relend id="r13_lhs_p_relend2" target="r13_lhs_2" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </LHS>
+    <RHS>
+      <RuleGraph id="create loc Right Hand RuleGraph">
+        <Graph id="create loc righthandGraph" edgemode="undirected" edgeids="true" hypergraph="true">
+          <node id="r13_rhs_1"/>
+          <node id="r13_rhs_2"/>
+          <node id="r13_rhs_3"/>
+          <node id="r13_rhs_4"/>
+          <rel id="r13_rhs_L1">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r13_rhs_l1_relend1" target="r13_rhs_1" startorder="0"/>
+            <relend id="r13_rhs_l1_relend2" target="r13_rhs_2" startorder="1"/>
+          </rel>
+          <rel id="r13_rhs_sconn">
+            <attr name="label">
+              <string>C</string>
+            </attr>
+            <relend id="r13_rhs_conn_relend1" target="r13_rhs_2" startorder="0"/>
+            <relend id="r13_rhs_conn_relend2" target="r13_rhs_3" startorder="1"/>
+          </rel>
+          <rel id="r13_rhs_L2">
+            <attr name="label">
+              <string>L</string>
+            </attr>
+            <relend id="r13_rhs_l2_relend1" target="r13_rhs_4" startorder="0"/>
+            <relend id="r13_rhs_l2_relend2" target="r13_rhs_3" startorder="1"/>
+          </rel>
+        </Graph>
+      </RuleGraph>
+    </RHS>
+    <Mapping id="r13_mapping">
+      <MapElem from="r13_lhs_1" to="r13_rhs_1"/>
+      <MapElem from="r13_lhs_2" to="r13_rhs_2"/>
+      <MapElem from="r13_lhs_p" to="r13_rhs_L1"/>
+    </Mapping>
+  </Rule>
+</GTS>
