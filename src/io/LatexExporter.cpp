@@ -76,7 +76,7 @@ namespace uncover {
 				unordered_map<IDType, IDType> const* ruleIDSubs,
 				unordered_map<IDType, IDType> const* graphIDSubs) const {
 
-			ofstream of;
+			std::ofstream of;
 			of.open(filename.c_str());
 
 			writeLatexHeader(of);
@@ -133,7 +133,7 @@ namespace uncover {
 			}
 		}
 
-		void LatexExporter::writeLatexHeader(ofstream& of) const {
+		void LatexExporter::writeLatexHeader(std::ofstream& of) const {
 			of << "\\documentclass[a4paper]{article}\n\n";
 			of << "\\usepackage{graphicx}\n";
 			of << "\\usepackage{amsmath}\n";
@@ -222,7 +222,7 @@ namespace uncover {
 		}
 
 		void LatexExporter::writeLatexBody(GTS const& gts,
-				ofstream& of,
+				std::ofstream& of,
 				string filename,
 				string ext,
 				unordered_map<IDType, IDType> const* ruleIDSubs,
